@@ -23,6 +23,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,13 +75,13 @@ fun MyApplicationApp() {
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(AppDestinations.HOME.name) {
-                    Greeting("Map Screen")
+                    MapScreen()
                 }
                 composable(AppDestinations.LIST.name) {
-                    Greeting("List Screen")
+                    ListScreen()
                 }
                 composable(AppDestinations.PROFILE.name) {
-                    Greeting("Profile Screen")
+                    ProfileScreen()
                 }
             }
         }
@@ -96,18 +97,3 @@ enum class AppDestinations(
     PROFILE("Profile", R.drawable.account),
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyApplicationTheme {
-        Greeting("Android")
-    }
-}
