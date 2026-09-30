@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.findabin
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
