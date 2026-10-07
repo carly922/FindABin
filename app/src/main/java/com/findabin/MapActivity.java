@@ -1,9 +1,13 @@
 package com.findabin;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.findabin.databinding.ActivityMapBinding;
@@ -17,6 +21,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private ActivityMapBinding binding;
+    private GoogleMap mMap;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +41,37 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-34, 151);
-        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 12f));
+       mMap = googleMap;
+       enableUserLocation();
+    }
+
+    private void enableUserLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+
+        mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+            @Override
+            public void onMyLocationChange(@NonNull Location location) {
+                LatLng userLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15f));
+                mMap.setOnMyLocationChangeListener(null); // Stop listening to prevent camera snapping
+            }
+        });
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                enableUserLocation();
+            }
+        }
     }
 }
