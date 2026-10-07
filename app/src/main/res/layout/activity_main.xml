@@ -7,18 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="556dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginBottom="290dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="email"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="594dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="249dp"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
