@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button button = findViewById(R.id.button);
+        Button button = findViewById(R.id.mapView);
         if (button != null) {
             button.setOnClickListener(v -> {
                 Intent intent = new Intent(MainActivity.this, MapActivity.class);
