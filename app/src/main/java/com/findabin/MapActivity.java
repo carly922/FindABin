@@ -1,9 +1,11 @@
 package com.findabin;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -36,6 +38,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 .findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
+        }
+
+        Button listViewButton = findViewById(R.id.listView);
+        if (listViewButton != null) {
+            listViewButton.setOnClickListener(v -> {
+                Intent intent = new Intent(MapActivity.this, ListActivity.class);
+                startActivity(intent);
+            });
         }
     }
 

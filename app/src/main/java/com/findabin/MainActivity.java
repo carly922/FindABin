@@ -1,6 +1,5 @@
 package com.findabin;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -9,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,12 +24,32 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button button = findViewById(R.id.mapView);
-        if (button != null) {
-            button.setOnClickListener(v -> {
-                Intent intent = new Intent(MainActivity.this, MapActivity.class);
-                startActivity(intent);
-            });
+        // Set default fragment to MapFragment on app launch
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new MapFragment())
+                    .commit();
         }
+
+        Button mapViewButton = findViewById(R.id.mapView);
+        if (mapViewButton != null) {
+            mapViewButton.setOnClickListener(v -> loadFragment(new MapFragment()));
+        }
+
+        Button listViewButton = findViewById(R.id.listView);
+        if (listViewButton != null) {
+            listViewButton.setOnClickListener(v -> loadFragment(new ListFragment()));
+        }
+
+        Button profileViewButton = findViewById(R.id.profileView);
+        if (profileViewButton != null) {
+            profileViewButton.setOnClickListener(v -> loadFragment(new ProfileFragment()));
+        }
+    }
+
+    private void loadFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit();
     }
 }

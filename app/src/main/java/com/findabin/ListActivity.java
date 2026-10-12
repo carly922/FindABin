@@ -1,6 +1,8 @@
 package com.findabin;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,13 @@ public class ListActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button mapViewButton = findViewById(R.id.mapView);
+        if (mapViewButton != null) {
+            mapViewButton.setOnClickListener(v -> {
+                Intent intent = new Intent(ListActivity.this, MapActivity.class);
+                startActivity(intent);
+            });
+        }
     }
 }
