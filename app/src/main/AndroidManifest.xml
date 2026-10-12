@@ -29,19 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MapActivity"
-            android:exported="false"
-            android:label="@string/title_activity_map"
-            android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ListActivity"
-            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>
 
