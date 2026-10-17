@@ -3,6 +3,7 @@ package com.findabin;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -35,6 +36,7 @@ public class StartScreen extends AppCompatActivity {
         });
 
         loginButton = findViewById(R.id.logIn);
+        createAccountButton = findViewById(R.id.createAccount);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +46,15 @@ public class StartScreen extends AppCompatActivity {
                 startActivity(loginIntent);
             }
 
+        });
+
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent createAccountIntent = new Intent(StartScreen.this, RegisterActivity.class);
+                startActivity(createAccountIntent);
+            }
         });
 
     }
