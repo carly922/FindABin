@@ -3,23 +3,23 @@ package com.findabin;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
-
-import com.google.android.material.snackbar.Snackbar;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.navigation.fragment.NavHostFragment;
+
+import android.view.View;
+import android.widget.Button;
+import android.content.Intent;
 
 import com.findabin.databinding.ActivityStartScreenBinding;
+import com.findabin.ui.login.LoginActivity;
 
 public class StartScreen extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
+    private Button loginButton;
+    private Button createAccountButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,34 +34,30 @@ public class StartScreen extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        setSupportActionBar(binding.toolbar);
 
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.nav_host_fragment_content_main);
+        loginButton = findViewById(R.id.logIn);
+        createAccountButton = findViewById(R.id.createAccount);
 
-        if (navHostFragment != null) {
-            NavController navController = navHostFragment.getNavController();
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-            NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        }
+                Intent loginIntent = new Intent(StartScreen.this, LoginActivity.class);
+                startActivity(loginIntent);
+            }
 
-        binding.fab.setOnClickListener(
-                view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show()
-        );
+        });
+
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent createAccountIntent = new Intent(StartScreen.this, RegisterActivity.class);
+                startActivity(createAccountIntent);
+            }
+        });
+
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.nav_host_fragment_content_main);
-        boolean handled = false;
-        if (navHostFragment != null) {
-            NavController navController = navHostFragment.getNavController();
-            handled = NavigationUI.navigateUp(navController, appBarConfiguration);
-        }
-        return handled || super.onSupportNavigateUp();
-    }
+
 }
