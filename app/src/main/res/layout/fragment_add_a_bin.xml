@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_bg"
+    tools:context=".AddABin">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/BackGroundGreen"
+        android:text="Submit"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moreDetails"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:text="Use my current location"
+        android:textAlignment="textStart"
+        android:textColor="@color/teal_700"
+        android:textSize="20sp"
+        app:icon="@android:drawable/ic_menu_mylocation"
+        app:iconPadding="4dp"
+        app:iconTint="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="or"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/searchView2"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.021" />
+
+    <SearchView
+        android:id="@+id/searchView2"
+        android:layout_width="307dp"
+        android:layout_height="wrap_content"
+        android:queryHint="Search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.0">
+
+    </SearchView>
+
+    <TextView
+        android:id="@+id/recyclingAccepted"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="     Recycling Accepted: "
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mockView"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/searchView2"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.utils.widget.MockView
+        android:id="@+id/mockView"
+        android:layout_width="196dp"
+        android:layout_height="119dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView2"
+        app:layout_constraintVertical_bias="0.032"
+        app:mock_label="Take a Photo"
+        app:mock_labelBackgroundColor="@color/white"
+        app:mock_labelColor="@color/BackGroundGreen" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclingAccepted"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/organic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Organic" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/cardboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cardboard" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/metal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Metal" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/paper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paper" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/glass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Glass" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/plastic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plastic" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/eWaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="E-Waste" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Other..." />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/moreDetails"
+        android:layout_width="329dp"
+        android:layout_height="153dp"
+        android:background="@android:drawable/editbox_background"
+        android:gravity="top|left"
+        android:hint="Please give us more details on this recycling bin."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+        app:layout_constraintVertical_bias="0.060000002" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
