@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="BackGroundGreen">#6E9F31</color>
     <color name="DarkerGreen">#09710D</color>
+    <color name="NavGray">#5a5b5a</color>
 </resources>
