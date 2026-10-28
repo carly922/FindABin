@@ -1,4 +1,4 @@
-package com.findabin.ui.theme.placeholder;
+package com.findabin.placeholder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,9 +44,7 @@ public class PlaceholderContent {
     private static String makeDetails(int position) {
         StringBuilder builder = new StringBuilder();
         builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
+        builder.append("\nMore details information here.");
         return builder.toString();
     }
 

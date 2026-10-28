@@ -1,4 +1,4 @@
-package com.findabin.ui.theme;
+package com.findabin;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,8 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.findabin.R;
-import com.findabin.ui.theme.placeholder.PlaceholderContent;
+import com.findabin.placeholder.PlaceholderContent;
 
 /**
  * A fragment representing a list of Items.

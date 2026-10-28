@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.findabin.ui.theme.RatingsFragment;
-
 public class ProfileFragment extends Fragment {
 
     @Nullable
