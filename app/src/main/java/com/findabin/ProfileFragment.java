@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.findabin.ui.theme.RatingsFragment;
+
 public class ProfileFragment extends Fragment {
 
     @Nullable
@@ -23,13 +25,13 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button myRatings = view.findViewById(R.id.myRatings);
-        //myRatings.setOnClickListener(v -> openFragment(new Ratings()));
+        myRatings.setOnClickListener(v -> openFragment(new RatingsFragment()));
 
         Button reportConcern = view.findViewById(R.id.reportConcern);
         reportConcern.setOnClickListener(v -> openFragment(new ReportConcern()));
 
         Button settings = view.findViewById(R.id.settings);
-        //settings.setOnClickListener(v -> openFragment(new Settings()));
+        settings.setOnClickListener(v -> openFragment(new SettingsFragment()));
 
     }
 
