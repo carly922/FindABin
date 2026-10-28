@@ -2,6 +2,7 @@ package com.findabin;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.fragment_container, new MapFragment())
                     .commit();
         }
+
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(v -> getSupportFragmentManager().popBackStack());
 
         Button mapViewButton = findViewById(R.id.mapView);
         if (mapViewButton != null) {
