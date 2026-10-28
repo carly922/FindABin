@@ -10,6 +10,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -44,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         Button profileViewButton = findViewById(R.id.profileView);
         if (profileViewButton != null) {
             profileViewButton.setOnClickListener(v -> loadFragment(new ProfileFragment()));
+        }
+
+        FloatingActionButton addBinButton = findViewById(R.id.addBin);
+        if (addBinButton != null) {
+            addBinButton.setOnClickListener(v -> loadFragment(new AddABin()));
         }
     }
 
