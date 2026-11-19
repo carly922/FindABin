@@ -33,5 +33,12 @@ public class ListFragment extends Fragment {
         ListView listView = view.findViewById(R.id.binListView);
         listView.setAdapter(new ArrayAdapter<>(requireContext(),
                 android.R.layout.simple_list_item_1, bins));
+
+        listView.setOnItemClickListener((parent, rowView, position, id) ->
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, new BinFragment())
+                        .addToBackStack(null)
+                        .commit());
     }
 }
