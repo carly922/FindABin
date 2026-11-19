@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bin_detail_title">Placeholder</string>
+    <string name="bin_detail_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="bin_detail_map_description">Map preview of a bin near the University of Central Florida Student Union</string>
+    <string name="bin_detail_add">Add a bin</string>
+    <string name="bin_detail_directions">Directions</string>
+    <string name="bin_detail_help">Help</string>
+</resources>
