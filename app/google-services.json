@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "490381342822",
+    "project_id": "findabin-513202",
+    "storage_bucket": "findabin-513202.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490381342822:android:08f56900cdb47d7dfd95a7",
+        "android_client_info": {
+          "package_name": "com.findabin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbCcLrPKP00LUtM53lHc2NvCiewbX5vQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
