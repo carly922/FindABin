@@ -1,11 +1,12 @@
 plugins {
-    id("com.android.application")
     // Google Services Gradle plugin
-    id("com.google.gms.google-services")
+    //id("com.google.gms.google-services")
 
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
+
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -39,12 +40,7 @@ android {
 
 dependencies {
     // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:35.2.0"))
-
-
-    // TODO: Add the dependencies for Firebase products you want to use
-    // When using the BoM, don't specify versions in Firebase dependencies
-    implementation("com.google.firebase:firebase-analytics")
+    //implementation(platform("com.google.firebase:firebase-bom:35.2.0"))
 
 
     // Add the dependencies for any other desired Firebase products
@@ -81,4 +77,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.play.services.location)
 }
