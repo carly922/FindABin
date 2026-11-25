@@ -20,6 +20,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
@@ -27,6 +29,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
+
+    private final BinRepository binRepository = new BinRepository();
 
     @Nullable
     @Override
@@ -62,8 +66,42 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
         enableUserLocation();
+
+        loadBins();
     }
 
+    private void loadBins(){
+        binRepository.getAllBins(new BinRepository.Callback<List<Bin>>() {
+            @Override
+            public void onSuccess(List<Bin> result) {
+                //checks if user has navigated away before drawing pins
+                if (!isAdded() || mMap == null) return;
+
+                for(Bin bin: result){
+                    if(bin.getLocation() == null){
+                        continue;
+                    }
+
+                    LatLng pos = new LatLng(bin.getLocation().getLatitude(), bin.getLocation().getLongitude());
+
+                    Marker marker = mMap.addMarker(new MarkerOptions()
+                            .position(pos)
+                            .title(bin.getName())
+                            .snippet(bin.getDescription()));
+
+                    if(marker != null){
+                        marker.setTag(bin.getId());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Log.e("MapFragment", "Failed to load bins", e);
+            }
+        });
+    }
     private void enableUserLocation() {
         if (getContext() == null) return;
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
