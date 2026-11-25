@@ -3,6 +3,7 @@ package com.findabin;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +13,15 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.findabin.data.BinRepository;
+import com.findabin.model.Bin;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+
+import java.util.List;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -36,6 +41,21 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
+
+        //temporary test pulling data from firestore
+
+        /*new BinRepository().getAllBins(new BinRepository.Callback<List<Bin>>() {
+            @Override
+            public void onSuccess(List<Bin> bins) {
+                for (Bin bin : bins) {
+                    Log.d("BinTest", bin.getId() + " → " + bin.getName() + " at " + bin.getLocation());
+                }
+            }
+            @Override
+            public void onError(Exception e) {
+                Log.e("BinTest", "failed", e);
+            }
+        });*/
     }
 
     @Override
