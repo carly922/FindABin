@@ -19,34 +19,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/backButton"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/NavGray"
-        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toStartOf="@+id/searchView"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/vd_vector"
-        app:tint="@color/white" />
+        app:tint="@color/white"
+        app:useCompatPadding="false" />
 
-    <SearchView
+    <EditText
         android:id="@+id/searchView"
-        android:layout_width="241dp"
-        android:layout_height="40dp"
-        android:background="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bg"
         android:backgroundTintMode="add"
-        android:foregroundGravity="center"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:drawableTint="@color/NavGray"
+        android:ems="10"
+        android:hint="Search"
+        android:inputType="textPassword"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view">
 
-    </SearchView>
+    </EditText>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
