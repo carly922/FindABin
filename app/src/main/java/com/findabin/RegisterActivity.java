@@ -17,6 +17,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.findabin.model.UserProfile;
+import com.findabin.ui.login.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -48,6 +49,18 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.editTextNumberPassword);
 
         final Button signupButton = findViewById(R.id.signUp);
+
+        // log in instead
+        final Button loginFromRegister = findViewById(R.id.loginFromRegister);
+        loginFromRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
 

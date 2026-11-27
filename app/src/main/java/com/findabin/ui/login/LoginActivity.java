@@ -1,7 +1,5 @@
 package com.findabin.ui.login;
 
-import android.app.Activity;
-
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
@@ -11,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -31,9 +28,7 @@ import android.widget.Toast;
 
 import com.findabin.MainActivity;
 import com.findabin.R;
-import com.findabin.StartScreen;
-import com.findabin.ui.login.LoginViewModel;
-import com.findabin.ui.login.LoginViewModelFactory;
+import com.findabin.RegisterActivity;
 import com.findabin.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -75,6 +70,18 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
         final ProgressBar loadingProgressBar = binding.loading;
+
+        // register instead
+        final Button loginFromRegister = findViewById(R.id.button);
+        loginFromRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+
+            }
+        });
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
