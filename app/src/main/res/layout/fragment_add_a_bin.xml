@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rounded_bg"
+    android:fillViewport="true"
     tools:context=".AddABin">
 
-    <!-- TODO: Update blank fragment layout -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp">
 
     <Button
         android:id="@+id/submit"
         android:layout_width="245dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/BackGroundGreen"
         android:text="Submit"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moreDetails"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.201" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/useLocationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#00FFFFFF"
@@ -50,7 +56,7 @@
         app:layout_constraintEnd_toStartOf="@+id/searchView2"
         app:layout_constraintHorizontal_bias="0.328"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/useLocationButton"
         app:layout_constraintVertical_bias="0.021" />
 
     <SearchView
@@ -62,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/useLocationButton"
         app:layout_constraintVertical_bias="0.0">
 
     </SearchView>
@@ -71,6 +77,7 @@
         android:id="@+id/recyclingAccepted"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="     Recycling Accepted: "
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -89,20 +96,20 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.utils.widget.MockView
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mockView"
-        android:layout_width="196dp"
-        android:layout_height="119dp"
-        android:layout_weight="1"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:liteMode="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView2"
-        app:layout_constraintVertical_bias="0.032"
-        app:mock_label="Take a Photo"
-        app:mock_labelBackgroundColor="@color/white"
-        app:mock_labelColor="@color/BackGroundGreen" />
+        app:layout_constraintVertical_bias="0.032" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
@@ -117,51 +124,52 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/organic"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Organic" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/cardboard"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cardboard" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/metal"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Metal" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/paper"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Paper" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/glass"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Glass" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/plastic"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Plastic" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/eWaste"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="E-Waste" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/other"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Other..." />
+            android:text="E-Waste" />
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -169,14 +177,31 @@
         android:id="@+id/moreDetails"
         android:layout_width="329dp"
         android:layout_height="153dp"
+        android:layout_marginTop="12dp"
         android:background="@android:drawable/editbox_background"
         android:gravity="top|left"
         android:hint="Please give us more details on this recycling bin."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/binTitle"
+        app:layout_constraintVertical_bias="0.167" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/binTitle"
+        android:layout_width="331dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:drawable/editbox_background"
+        android:gravity="top|left"
+        android:hint="A descriptive  title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chipGroup"
-        app:layout_constraintVertical_bias="0.060000002" />
+        app:layout_constraintVertical_bias="0.102" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

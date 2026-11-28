@@ -1,5 +1,6 @@
 package com.findabin.data;
 
+import android.telecom.Call;
 import android.util.Log;
 
 import com.findabin.model.*;
@@ -46,5 +47,15 @@ public class BinRepository {
                     Log.e("BinRepository", "getBin failed", e);
                     callback.onError(e);
                 });
+    }
+
+    public void addBin(Bin bin, Callback<Void> callback){
+        db.collection(BINS).add(bin)
+                .addOnSuccessListener(docRef -> callback.onSuccess(null))
+                .addOnFailureListener(e ->{
+                    Log.e("BinRepository", "add bin failed",e);
+                    callback.onError(e);
+                });
+
     }
 }

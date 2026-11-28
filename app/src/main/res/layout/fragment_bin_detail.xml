@@ -65,13 +65,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
 
-                <ImageView
+                <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/binMapPreview"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:contentDescription="@string/bin_detail_map_description"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/mock_map"
+                    app:liteMode="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="4:3"
                     app:layout_constraintEnd_toEndOf="parent"

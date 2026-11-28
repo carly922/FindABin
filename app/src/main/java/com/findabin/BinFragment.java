@@ -14,7 +14,10 @@ import androidx.fragment.app.Fragment;
 
 import com.findabin.data.BinRepository;
 import com.findabin.model.Bin;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class BinFragment extends Fragment {
 
@@ -41,6 +44,7 @@ public class BinFragment extends Fragment {
         final TextView binTitle = view.findViewById(R.id.binTitle);
         final TextView binDescription = view.findViewById(R.id.binDescription);
         final AppCompatImageButton binDirectionsButton = view.findViewById(R.id.binDirectionsButton);
+        final AppCompatImageButton addReviewButton = view.findViewById(R.id.binAddButton);
 
         String binId = requireArguments().getString("binId");
 
@@ -58,7 +62,31 @@ public class BinFragment extends Fragment {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q=" + lat + "," + lng));
                         startActivity(intent);
                     });
+
+                    SupportMapFragment mapPreview = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.binMapPreview);
+                    if (mapPreview != null) {
+                        mapPreview.getMapAsync(map -> {
+                            LatLng pos = new LatLng(lat, lng);
+                            map.addMarker(new MarkerOptions().position(pos).title(result.getName()));
+                            map.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 16f));
+                        });
+                    }
                 }
+
+                addReviewButton.setOnClickListener(v ->{
+                    Bundle bundle = new Bundle();
+                    bundle.putString("binId", binId);
+
+
+                    Fragment ratingsFragment = new RatingsFragment();
+
+                    ratingsFragment.setArguments(bundle);
+                    getParentFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragment_container, ratingsFragment)
+                            .addToBackStack(null)
+                            .commit();
+                });
             }
 
             @Override
